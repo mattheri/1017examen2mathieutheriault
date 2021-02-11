@@ -1,8 +1,8 @@
 <template>
   <main>
-      <h1>Bonjour {{ name }}!</h1>
-      <Connexion v-show="!name" />
-      <button v-on:click="signOutUser($event)" v-show="name">Déconnection</button>
+      <h1>Bonjour {{ username }}!</h1>
+      <Connexion v-show="!username" />
+      <button v-on:click="signOutUser($event)" v-show="username">Déconnection</button>
   </main>
 </template>
 
@@ -11,7 +11,7 @@ import Connexion from '../components/Connexion';
 import { Firebase } from '../firebase';
 export default {
     name: 'Accueil',
-    props: ['name', 'email'],
+    props: ['username'],
     components: {
         Connexion
     },

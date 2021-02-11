@@ -2,21 +2,11 @@
   <header>
       <nav>
           <ul>
-              <li>
-                  <a href='#'>
-                    Accueil
-                  </a>
-              </li>
-              <li>
-                  <a href='#'>
-                    Projets
-                  </a>
-              </li>
-              <li>
-                  <a href='#'>
-                    Contact
-                  </a>
-              </li>
+            <li v-for="lien in liens" :key="lien.text">
+                <router-link :to="lien.to">
+                    {{ lien.text }}                    
+                </router-link>
+            </li> 
           </ul>
       </nav>
   </header>
@@ -24,7 +14,23 @@
 
 <script>
 export default {
-    name: 'Header'
+    name: 'Header',
+    data: function () {
+        return {liens: [
+            {
+                to: '/',
+                text: 'Accueil'
+            },
+            {
+                to: '/projets',
+                text: 'Projets'
+            },
+            {
+                to: '/contact',
+                text: 'Contact'
+            }
+        ]
+    }}
 }
 </script>
 

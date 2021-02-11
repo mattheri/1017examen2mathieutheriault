@@ -1,13 +1,12 @@
 <template>
   <div id="app">
     <Header />
-    <Accueil v-bind:name='user.name' />
+    <router-view :username="user.name" />
     <Footer />
   </div>
 </template>
 
 <script>
-import Accueil from './views/Accueil';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import { Firebase } from './firebase';
@@ -15,7 +14,6 @@ import { Firebase } from './firebase';
 export default {
   name: 'App',
   components: {
-    Accueil,
     Header,
     Footer
   },
@@ -43,11 +41,9 @@ export default {
         this.user.email = '';
       }
     })
-    // const { currentUser } = await fb.auth();
   }
 }
 </script>
-
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
   html, body, #app {
