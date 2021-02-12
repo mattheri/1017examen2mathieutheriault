@@ -30,7 +30,6 @@ export default {
     const fb = new Firebase();
     const { auth } = await fb.auth();
     auth.onAuthStateChanged((user) => {
-      console.log(user);
       if (user) {
         const name = user?.displayName ? user?.displayName : user?.email;
         const email = user?.email;

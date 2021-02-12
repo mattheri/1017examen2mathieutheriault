@@ -16,19 +16,20 @@
 export default {
     name: 'Header',
     data: function () {
-        return {liens: [
-            {
-                to: '/',
-                text: 'Accueil'
-            },
-            {
-                to: '/projets',
-                text: 'Projets'
-            },
-            {
-                to: '/contact',
-                text: 'Contact'
-            }
+        return {
+            liens: [
+                {
+                    to: '/',
+                    text: 'Accueil'
+                },
+                {
+                    to: '/projets',
+                    text: 'Projets'
+                },
+                {
+                    to: '/contact',
+                    text: 'Contact'
+                }
         ]
     }}
 }
