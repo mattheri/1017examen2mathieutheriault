@@ -2,11 +2,11 @@
   <section>
     <form>
       <div>
-        <input v-model="formData.firstname" v-bind:class="{active: formData.email.firstname > 0}" type="text" id='firstname' />
+        <input v-model="formData.firstname" v-bind:class="{active: formData.firstname.length > 0}" type="text" id='firstname' />
         <label for='firstname'>Prénom</label>
       </div>
       <div>
-        <input v-model="formData.lastname" v-bind:class="{active: formData.email.lastname > 0}" type="text" id='lastname' />
+        <input v-model="formData.lastname" v-bind:class="{active: formData.lastname.length > 0}" type="text" id='lastname' />
         <label for='lastname'>Nom de famille</label>
       </div>
       <div>
@@ -58,11 +58,11 @@ export default {
     -webkit-backdrop-filter: blur( 4px );
     border-radius: 10px;
     border: 1px solid rgba( 255, 255, 255, 0.18 );
-    height: 80%;
     width: 50%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 1rem;
   }
   div {
     display: flex;

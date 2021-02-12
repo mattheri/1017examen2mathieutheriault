@@ -1,10 +1,18 @@
 <template>
-  <footer>Blablabla</footer>
+  <footer v-copyright></footer>
 </template>
 
 <script>
 export default {
-    name: 'Footer'
+    name: 'Footer',
+    directives: {
+        copyright: {
+            inserted: function(el) {
+                const year = new Date(Date.now()).getFullYear();
+                el.innerText = `Copyright ©️ ${year} - Mathieu Thériautl - All Rights Reserved`
+            }
+        }
+    }
 }   
 </script>
 
