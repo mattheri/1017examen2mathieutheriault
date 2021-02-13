@@ -4,50 +4,53 @@
         <form v-on:change="isDisabled">
             <div>
             <input v-model="email" v-bind:class="{active: email.length > 0}" type="email" id='email' />
-            <label for='email'>Courriel</label>
+            <label for='email'>{{ labels.email | translate }}</label>
             </div>
             <div>
             <input v-model="password" v-bind:class="{active: password.length > 0}" type="password" id='password' />
-            <label for='password'>Mot de passe</label>
+            <label for='password'>{{ labels.password | translate }}</label>
             </div>
-            <button :disabled='disabled' v-on:click="signInUser($event)">Connexion</button>
+            <button :disabled='disabled' v-on:click="signInUser($event)">{{ labels.login | translate }}</button>
         </form>
-      <button v-on:click='flip' class='signup-btn'>Pas de compte?</button>
+      <button v-on:click='flip' class='signup-btn'>{{ labels.noAccount | translate }}</button>
       </div>
       <div class='card back'>
         <form v-on:change="isDisabled">
             <div>
             <input v-model="emailSignup" v-bind:class="{active: emailSignup.length > 0}" type="email" id='email-signup' />
-            <label for='email-signup'>Courriel</label>
+            <label for='email-signup'>{{ labels.email | translate }}</label>
             </div>
             <div>
             <input v-model="passwordSignup" v-bind:class="{active: passwordSignup.length > 0}" type="password" id='password-signup' />
-            <label for='password-signup'>Mot de passe</label>
+            <label for='password-signup'>{{ labels.password | translate }}</label>
             </div>
             <div>
             <input v-model="passwordRetype" v-bind:class="{active: passwordRetype.length > 0}" type="password" id='password-signup-retype' />
-            <label for='password-signup-retype'>Une 2e fois</label>
+            <label for='password-signup-retype'>{{ labels.again | translate }}</label>
             </div>
-            <button :disabled='disabled' v-on:click="signUpUser">Connexion</button>
+            <button :disabled='disabled' v-on:click="signUpUser">{{ labels.login | translate }}</button>
         </form>
-        <button v-on:click='flip' class='signup-btn'>J'ai un compte</button>
+        <button v-on:click='flip' class='signup-btn'>{{ labels.account | translate }}</button>
       </div>
   </section>
 </template>
 
 <script>
 import { Firebase } from '../firebase';
+import { store } from '../store';
 export default {
     name: 'Connexion',
     data: function () {
         return {
+            labels: {},
             email: '',
             password: '',
             emailSignup: '',
             passwordSignup: '',
             passwordRetype: '',
             isFlipped: false,
-            disabled: true
+            disabled: true,
+            store: store
         }
     },
     methods: {
@@ -207,9 +210,9 @@ export default {
     }
     button:disabled {
         cursor: default;
-        background: #fff;
+        background: rgb(153, 153, 153);
     }
     button:disabled:hover {
-        background: #fff;
+        background: rgb(153, 153, 153);
     }
 </style>

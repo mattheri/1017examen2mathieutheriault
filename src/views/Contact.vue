@@ -3,19 +3,19 @@
     <form>
       <div>
         <input v-model="formData.firstname" v-bind:class="{active: formData.firstname.length > 0}" type="text" id='firstname' />
-        <label for='firstname'>Prénom</label>
+        <label for='firstname'>{{ labels.firstname | translate }}</label>
       </div>
       <div>
         <input v-model="formData.lastname" v-bind:class="{active: formData.lastname.length > 0}" type="text" id='lastname' />
-        <label for='lastname'>Nom de famille</label>
+        <label for='lastname'>{{ labels.lastname | translate }}</label>
       </div>
       <div>
         <input v-model="formData.email" v-bind:class="{active: formData.email.length > 0}" type="email" id='email' />
-        <label for='email'>Courriel</label>
+        <label for='email'>{{ labels.email | translate }}</label>
       </div>
       <div>
         <select v-model="formData.category" id='categories' value=''>
-          <option v-for="category in cat" :key="category" :value="category">{{ category }}</option>
+          <option v-for="category in cat" :key="category" :value="category">{{ category | translate }}</option>
         </select>
       </div>
     </form>
@@ -23,22 +23,24 @@
 </template>
 
 <script>
+import { store } from '../store'
 export default {
   name: 'Contact',
   data: function() {
     return {
+      labels: {},
+      store: store,
       formData: {
         firstname: '',
         lastname: '',
         email: '',
         category: ''
       },
-      cat: [
-        "Rendez-vous",
-        "Informations",
-        "Autre"
-      ]
+      cat: [],
     }
+  },
+  created: function() {
+    this.$data.cat = this.$data.labels.categories
   }
 }
 </script>

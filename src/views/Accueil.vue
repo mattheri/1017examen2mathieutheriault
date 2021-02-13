@@ -1,19 +1,26 @@
 <template>
   <main>
-      <h1>Bonjour {{ username }}!</h1>
+      <h1>{{ labels.hello | translate }} {{ username }}!</h1>
       <Connexion v-show="!username" />
-      <button v-on:click="signOutUser($event)" v-show="username">Déconnection</button>
+      <button v-on:click="signOutUser($event)" v-show="username">{{ labels.logout | translate }}</button>
   </main>
 </template>
 
 <script>
 import Connexion from '../components/Connexion';
 import { Firebase } from '../firebase';
+import { store } from '../store';
 export default {
     name: 'Accueil',
     props: ['username'],
     components: {
         Connexion
+    },
+    data: function() {
+        return {
+            labels: {},
+            store: store
+        }
     },
     methods: {
         signOutUser: async function(event) {

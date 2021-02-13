@@ -4,34 +4,52 @@
           <ul>
             <li v-for="lien in liens" :key="lien.text">
                 <router-link :to="lien.to">
-                    {{ lien.text }}                    
+                    {{ lien.text | translate }}                
                 </router-link>
-            </li> 
+            </li>
+            <li @click="changeLanguage" v-language></li>
           </ul>
       </nav>
   </header>
 </template>
 
 <script>
+import { store } from '../store';
+
 export default {
     name: 'Header',
     data: function () {
         return {
-            liens: [
-                {
-                    to: '/',
-                    text: 'Accueil'
-                },
-                {
-                    to: '/projets',
-                    text: 'Projets'
-                },
-                {
-                    to: '/contact',
-                    text: 'Contact'
-                }
-        ]
-    }}
+        labels: {},
+        liens: [
+            {
+                to: '/',
+                text: 'Accueil'
+            },
+            {
+                to: '/projets',
+                text: 'Projets'
+            },
+            {
+                to: '/contact',
+                text: 'Contact'
+            }
+        ],
+        store: store
+    }},
+    created: function() {
+        this.$data.liens.forEach((lien, i) => lien.text = this.$data.labels.nav[i])
+    },
+    methods: {
+        changeLanguage: function() {
+            store.language = store.language === 'en' ? 'fr' : 'en';
+        }
+    },
+    directives: {
+        language: function(el) {
+            el.innerText = store.language === 'en' ? 'FR' : 'EN';
+        }
+    }
 }
 </script>
 
@@ -58,6 +76,8 @@ export default {
         margin: 0 2rem;
         position: relative;
         animation: appear 500ms cubic-bezier(0.87, 0, 0.13, 1) 0ms forwards;
+        color: white;
+        cursor: pointer;
     }
     li:first-of-type {
         margin-left: 0;
