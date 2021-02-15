@@ -3,7 +3,7 @@
 ## Création initiale
 
 ```
-cs ./Documents/Projects && vue create 1017examen2mathieutheriault
+cd ./Documents/Projects && vue create 1017examen2mathieutheriault
 ```
 
 ## Ajout Vue Router
