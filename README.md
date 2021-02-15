@@ -1,24 +1,19 @@
 # 1017examen2mathieutheriault
 
-## Project setup
+## Création initiale
+
 ```
-npm install
+cs ./Documents/Projects && vue create 1017examen2mathieutheriault
 ```
 
-### Compiles and hot-reloads for development
+## Ajout Vue Router
+
+```
+vue add router
+```
+
+## Serveur de développement
+
 ```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
