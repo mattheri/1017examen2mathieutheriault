@@ -3,15 +3,11 @@
 </template>
 
 <script>
+import { getCurrentYear } from '../currentYear';
 export default {
     name: 'Footer',
     directives: {
-        copyright: {
-            inserted: function(el) {
-                const year = new Date(Date.now()).getFullYear();
-                el.innerText = `Copyright ©️ ${year} - Mathieu Thériautl - All Rights Reserved`
-            }
-        }
+        copyright: getCurrentYear()
     }
 }   
 </script>

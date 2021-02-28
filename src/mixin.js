@@ -52,15 +52,21 @@ export const mixin = translateMixin[store.language];
 export function translate(value) {
     let key = Object.keys(mixin).find(key => mixin[key] === value);
 
-    // Check if not in nav array
+    // Si aucune clé, vérifie que la clé n'est pas dans l'array nav
     if (!key) {
+        // Assigne la clé à l'array "nav" si l'array categories contient bien la valeur
         key = mixin['nav'].some(val => val === value) && 'nav';
     }
-    // Check if not in categories array
+    // Si aucune clé, vérifie que la clé n'est pas dans l'array categories
     if (!key) {
+        // Assigne la clé à l'array "categories" si l'array categories contient bien la valeur
         key = mixin['categories'].some(val => val === value) && 'categories';
     }
+
+    // Si l'objet translateMixin[store.language][key] est de type array
     return Array.isArray(translateMixin[store.language][key]) ? 
+        // Retrouve la valeur dans l'array
         translateMixin[store.language][key][mixin[key].findIndex(val => val === value)] : 
+        // Sinon on retourne tout simplement la valeur dans l'objet
         translateMixin[store.language][key];
 }

@@ -55,36 +55,49 @@ export default {
     },
     methods: {
         flip: function() {
+            // Détermine la direction du composant.
             return this.isFlipped = !this.isFlipped;
         },
         isDisabled: function() {
+            // Conditions pour que le formulare SignIn doit remplir afin que le bouton ne soit pas :disabled
             const signinCondition = !!(this.email.length > 3 && this.password.length > 3);
+            // Conditions pour que le formulaire SignUp doit remplir afin que le bouton ne soit pas :disabled
             const signupCondition = !!(
                 this.emailSignup.length > 3 && 
                 this.passwordSignup.length > 3 && 
                 this.passwordRetype === this.passwordSignup
                 );
             if (
+                // Les conditions sont remplies
                 signinCondition || signupCondition
             ) {
+                // Le bouton n'est pas :disabled
                 return this.disabled = false;
             }
 
+            // Le bouton est :disabled
             return this.disabled = true;
         },
         signUpUser: async function (event) {
             event.preventDefault();
+            // Initialise la classe Firebase
             const fb = new Firebase();
+            // Obtient la fonction signUp de la méthode auth()
             const { signUp } = await fb.auth();
             return await signUp(this.emailSignup, this.passwordSignup);
         },
         signInUser: async function(event) {
             event.preventDefault();
+            // Initialise la classe Firebase
             const fb = new Firebase();
+            // Obtient les fonctions signIn et singOut, ainsi que la propriété currentUser de la méthode auth()
             const { signIn, currentUser, signOut } = await fb.auth();
+            // S'il y a un currentUser
             if (currentUser) {
+                // On le signout
                 return signOut();
             } else {
+                // Sinon, on peut le signIn
                 return await signIn(this.email, this.password);
             }
         }
