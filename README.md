@@ -17,3 +17,11 @@ vue add router
 ```
 npm run serve
 ```
+
+## Description de l'application
+
+L'application est une simple plateforme avec authentication. L'authentication est faite avec Firebase.
+
+## License
+
+MIT
