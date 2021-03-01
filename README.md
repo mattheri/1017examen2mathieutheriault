@@ -20,7 +20,7 @@ npm run serve
 
 ## Description de l'application
 
-L'application est une simple plateforme avec authentication. L'authentication est faite avec Firebase.
+L'application est une simple plateforme avec authentication. L'authentication est faite avec Firebase. Le site est fait avec Vue.js et utilise Vue Router.
 
 ## License
 
